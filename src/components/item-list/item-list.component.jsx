@@ -81,18 +81,22 @@ export default function ControlledExpansionPanels() {
             <ItemDetails
               title={otherLabProps.items[0].title}
               description={otherLabProps.items[0].description}
+              flag={otherLabProps.items[0].flag}
             />
             <ItemDetails
               title={otherLabProps.items[1].title}
               description={otherLabProps.items[1].description}
+              flag={otherLabProps.items[1].flag}
             />
             <ItemDetails
               title={otherLabProps.items[2].title}
               description={otherLabProps.items[2].description}
+              flag={otherLabProps.items[2].flag}
             />
             <ItemDetails
               title={otherLabProps.items[3].title}
               description={otherLabProps.items[3].description}
+              flag={otherLabProps.items[3].flag}
             />
           </ExpansionPanelDetails>
         </ExpansionPanel>

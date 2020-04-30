@@ -73,7 +73,7 @@ const LAB_DATA = [
     items: [
       {
         id: 1,
-        title: 'Password Hashing and Hash Acquisition Methods',
+        title: 'Password Hashing and Acquisition Methods',
         description:
           'This method performs a one-way transformation on a password, thus turning the password into another completely different string. The “one-way” part is making the claim that it is impossible to go the other way around.',
         flag: '123.456.789',

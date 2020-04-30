@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import { CircularProgress } from '@material-ui/core';
 import ButtonComponent from '../button/button.component';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +36,17 @@ const useStyles = makeStyles((theme) => ({
   form: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
+  },
+  inputCorrect: {
+    backgroundColor: '#f4f4f4',
+    borderRadius: '5px',
+    boxShadow: '0px 0px 15px 5px #2D9A36',
+  },
+  inputIncorrect: {
+    backgroundColor: '#f4f4f4',
+    borderRadius: '5px',
+    boxShadow: '0px 0px 15px 5px red',
   },
   input: {
     backgroundColor: '#f4f4f4',
@@ -72,6 +81,10 @@ const useStyles = makeStyles((theme) => ({
     color: '#f4f4f4',
     backgroundColor: '#2D9A36',
   },
+  checkText: {
+    textAlign: 'center',
+    marginTop: '.2rem',
+  },
 }));
 
 export default function SimpleCard(props) {
@@ -79,18 +92,23 @@ export default function SimpleCard(props) {
 
   const [flag, setFlag] = useState('');
   const [loading, setLoading] = useState(false);
+  const [check, setCheck] = useState('');
 
   const load = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      console.log(flag);
-    }, 3000);
+      if (props.flag === flag) {
+        setCheck('true');
+      } else {
+        setCheck('false');
+      }
+    }, 2000);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(flag);
+    console.log(load());
   };
 
   return (
@@ -118,7 +136,12 @@ export default function SimpleCard(props) {
           }}
           InputProps={{
             classes: {
-              input: classes.input,
+              input:
+                check === ''
+                  ? classes.input
+                  : check === 'true'
+                  ? classes.inputCorrect
+                  : classes.inputIncorrect,
               root: classes.cssOutlinedInput,
               focused: classes.cssFocused,
               notchedOutline: classes.notchedOutline,
@@ -134,13 +157,15 @@ export default function SimpleCard(props) {
         {/* <Button type="submit" className={classes.checkFlagBtn}>
           Check Flag
         </Button> */}
-
         <ButtonComponent
           type="submit"
           onClick={load}
           loading={loading}
           className={classes.checkFlagBtn}
         />
+        <div className={classes.checkText}>
+          {check === '' ? '' : check === 'true' ? 'Correct!' : 'Try again!'}
+        </div>
       </form>
     </Card>
   );

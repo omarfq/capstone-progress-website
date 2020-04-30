@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { CircularProgress, Button } from '@material-ui/core';
-import ItemDetails from '../item-details/item-details.component';
 
 const useStyles = makeStyles((theme) => ({
   checkFlagBtn: {
@@ -13,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
     color: '#f4f4f4',
     backgroundColor: '#2D9A36',
+    marginTop: '.6rem',
   },
   spinner: {
     color: '#fff',
@@ -31,6 +31,7 @@ function ButtonComponent(props) {
       disabled={loading}
     >
       {loading && <CircularProgress size={24} className={classes.spinner} />}
+
       {!loading && 'Check Flag'}
     </Button>
   );
