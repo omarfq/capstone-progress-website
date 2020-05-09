@@ -1,9 +1,12 @@
 import React from 'react';
 import './header.styles.scss';
+import Logo from '../../assets/logo.png';
 
 const Header = () => (
   <div className="header">
-    <h3 id="companyName">PentestPak</h3>
+    <span>
+      <img src={Logo} className="logo" alt="PezCool Logo" />
+    </span>
     <h3>Laboratory Environment</h3>
     <button className="clear-btn">Clear Progress</button>
   </div>

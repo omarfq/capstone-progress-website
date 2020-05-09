@@ -82,6 +82,7 @@ export default function ControlledExpansionPanels() {
               title={otherLabProps.items[0].title}
               description={otherLabProps.items[0].description}
               flag={otherLabProps.items[0].flag}
+              complete={false}
             />
             <ItemDetails
               title={otherLabProps.items[1].title}

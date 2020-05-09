@@ -7,8 +7,8 @@ const LAB_DATA = [
         id: 1,
         title: 'Information Gathering',
         description:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        flag: '123.456.789',
+          "What's that IP address that you're looking for? Enter here!",
+        flag: '151.101.1.69',
       },
       {
         id: 2,
