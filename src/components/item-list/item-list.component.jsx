@@ -115,7 +115,7 @@ export default function ControlledExpansionPanels() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      if (count === 2) {
+      if (count === 1) {
         setCompleted('true');
       } else {
         setCompleted('false');
