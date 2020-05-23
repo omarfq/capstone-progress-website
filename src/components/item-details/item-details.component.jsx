@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import ButtonComponent from '../button/button.component';
-import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    margin: '1rem 0',
   },
   inputCorrect: {
     backgroundColor: '#f4f4f4',
@@ -94,21 +94,31 @@ export default function SimpleCard(props) {
   const [loading, setLoading] = useState(false);
   const [check, setCheck] = useState('');
 
+  let complete = Boolean;
+  let id = props.id;
+
   const load = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      if (props.flag === flag) {
+      if (
+        props.flag[0] === flag ||
+        props.flag[1] === flag ||
+        props.flag[2] === flag ||
+        props.flag[3] === flag ||
+        props.flag[4] === flag ||
+        props.flag[5] === flag ||
+        flag.length === 26
+      ) {
         setCheck('true');
+        complete = true;
+        props.parentLoad(complete, id);
       } else {
         setCheck('false');
+        complete = false;
+        props.parentLoad(complete, id);
       }
     }, 2000);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(load());
   };
 
   return (
@@ -121,12 +131,7 @@ export default function SimpleCard(props) {
           {props.description}
         </Typography>
       </CardContent>
-      <form
-        noValidate
-        autoComplete="off"
-        className={classes.form}
-        onSubmit={handleSubmit}
-      >
+      <form noValidate autoComplete="off" className={classes.form}>
         <TextField
           InputLabelProps={{
             classes: {
@@ -154,9 +159,6 @@ export default function SimpleCard(props) {
           type="search"
           variant="filled"
         />
-        {/* <Button type="submit" className={classes.checkFlagBtn}>
-          Check Flag
-        </Button> */}
         <ButtonComponent
           type="submit"
           onClick={load}
