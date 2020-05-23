@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ItemDetails from '../item-details/item-details.component';
 import LAB_DATA from '../data/lab.data';
-import FinishButtonComponent from '../button/finishButton.component';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,15 +59,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  detailsContainerCompleted: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: 'red',
-  },
-  finishText: {
-    textAlign: 'center',
-    color: '#fff',
-  },
   text: {
     textAlign: 'center',
     color: '#fff',
@@ -78,10 +68,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ControlledExpansionPanels() {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  const [completed, setCompleted] = useState('');
-  const [count, setCount] = useState(0);
   const [data, setData] = useState(LAB_DATA);
   const [childData, setChildData] = useState(Boolean);
 
@@ -104,23 +91,10 @@ export default function ControlledExpansionPanels() {
     if (
       JSON.stringify(childDataArray) === JSON.stringify(childVerificationArray)
     ) {
-      setCount(count + 1);
       setChildData(true);
     } else {
       setChildData(false);
     }
-  };
-
-  const loadButton = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      if (count === 1) {
-        setCompleted('true');
-      } else {
-        setCompleted('false');
-      }
-    }, 2000);
   };
 
   return (
@@ -136,9 +110,7 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanel
           expanded={expanded === `panel${id}`}
           onChange={handleChange(`panel${id}`)}
-          className={
-            completed === 'true' ? classes.itemCompleted : classes.item
-          }
+          className={classes.item}
           key={id}
           {...otherLabProps}
         >
@@ -183,18 +155,6 @@ export default function ControlledExpansionPanels() {
           </ExpansionPanelDetails>
         </ExpansionPanel>
       ))}
-      <FinishButtonComponent
-        onClick={loadButton}
-        loading={loading}
-        className={classes.checkFlagBtn}
-      />
-      <h2 className={classes.finishText}>
-        {completed === 'true'
-          ? 'Congratulations on finishing the lab! Great work!'
-          : completed === 'false'
-          ? 'You still have some exercises left!'
-          : ''}
-      </h2>
     </div>
   );
 }
