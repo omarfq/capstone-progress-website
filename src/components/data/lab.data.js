@@ -138,28 +138,28 @@ const LAB_DATA = [
         title: 'Network Scanning',
         description:
           'It refers to the gathering of information about computing systems or servers through the use of a particular computer network.',
-        flag: ['1'],
+        flag: ['5'],
       },
       {
         id: 2,
         title: 'Focused Network Scanning',
         description:
           'A more detailed and in depth approach to network scanning. Focusing more on one aspect of traffic and packages.',
-        flag: ['2'],
+        flag: ['65523'],
       },
       {
         id: 3,
         title: 'Vulnerability Scanning',
         description:
           'It refers to the analysis or inspection of vulnerable or potentially exploitable computer software, hardware, or network with the sole purpose of identifying security holes.',
-        flag: ['3'],
+        flag: ['Apache httpd 2.4.25 ((Debian))', 'Apache httpd 2.4.25'],
       },
       {
         id: 4,
         title: 'Network Visualization',
         description:
           'This special visualization is often used to visualize complex relationships between huge network systems.',
-        flag: ['4'],
+        flag: ['9'],
       },
     ],
   },

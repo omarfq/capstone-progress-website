@@ -69,6 +69,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: '#fff',
   },
+  text: {
+    textAlign: 'center',
+    color: '#fff',
+  },
 }));
 
 export default function ControlledExpansionPanels() {
@@ -80,8 +84,6 @@ export default function ControlledExpansionPanels() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState(LAB_DATA);
   const [childData, setChildData] = useState(Boolean);
-
-  let verify;
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -103,15 +105,9 @@ export default function ControlledExpansionPanels() {
       JSON.stringify(childDataArray) === JSON.stringify(childVerificationArray)
     ) {
       setCount(count + 1);
-      console.log(childDataArray);
-      console.log(`CALLBACK TRUE ${data} ${id} ${count}`);
       setChildData(true);
-      return true;
     } else {
-      console.log(`CALLBACK FALSE ${data} ${count}`);
-      console.log(childDataArray);
       setChildData(false);
-      return false;
     }
   };
 
@@ -130,6 +126,11 @@ export default function ControlledExpansionPanels() {
   return (
     <div className={classes.root}>
       <h3 className={classes.heading3}>Track Your Progress</h3>
+      <h6 className={classes.text}>
+        The flag-checking system is case-sensitive, please enter the flags
+        exactly as they are given by the exercises.
+      </h6>
+      <p className={classes.text}>Good luck!</p>
 
       {data.map(({ id, ...otherLabProps }) => (
         <ExpansionPanel
